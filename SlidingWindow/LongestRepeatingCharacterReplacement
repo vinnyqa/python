@@ -1,0 +1,27 @@
+# You are given a string s consisting of only uppercase english characters and an integer k.
+# You can choose up to k characters of the string and replace them with any other uppercase English character.
+# After performing at most k replacements, return the length of the longest substring which contains only one distinct character.
+
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        count = {}
+        res = 0
+
+        l = 0
+        maxf = 0
+        for r in range(len(s)):
+            count[s[r]] = 1 + count.get(s[r], 0) #Increment the character of position r
+            maxf = max(maxf, count[s[r]]) #maxf is max of maxf and count[s[r]
+
+            while (r - l + 1) - maxf > k: #To make sure current window is valid.. Thumb rule is Size of Sliding Window (r-l+1) - Max Frequency of all characters is greater than input k
+                count[s[l]] -= 1 #Remove/Pop character from Left
+                l += 1 #Increment the Left Character
+            res = max(res, r - l + 1) #Size of Sliding Window = r-l+1
+
+        return res
+
+sol = Solution()
+s="AAABABB"
+k=1
+print(sol.characterReplacement(s,k))
+# Time : O(n), Space : O(m) n is length of String, m is total number of unique characters in the String
