@@ -1,0 +1,27 @@
+#Given an array of meeting time interval objects consisting of start and end times [[start_1,end_1],[start_2,end_2],...] (start_i < end_i), find the minimum number of days required to schedule all meetings without any conflicts.
+
+#Definition of Interval:
+import heapq
+class Interval(object):
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+class Solution:
+    def canAttendMeetings(self, intervals: list[Interval]) -> bool:
+        intervals.sort(key=lambda i: i.start) #Sort the Intervals based on Start Time
+        min_heap = [] 
+
+        for interval in intervals: #For each interval 
+            if min_heap and min_heap[0] <= interval.start: #if the start time is greater or equal than the heap[0] we will pop from heap and push the interval’s end time into heap
+                heapq.heappop(min_heap)
+            heapq.heappush(min_heap, interval.end) #Otherwise, we will just push the interval’s end time into heap.
+        
+        return len(min_heap) #Result will be the size of heap.
+
+intervals = [(0,40),(5,10),(15,20)]
+output: 2
+
+intervals = [(4,9)]
+output= 1
+# Time : O(nlogn), Space : O(n)
