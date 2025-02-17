@@ -1,0 +1,27 @@
+# Given an array of meeting time interval objects consisting of start and end times [[start_1,end_1],[start_2,end_2],...] (start_i < end_i), determine if a person could add all meetings to their schedule without any conflicts.
+
+#Definition of Interval:
+class Interval(object):
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+class Solution:
+    def canAttendMeetings(self, intervals: list[Interval]) -> bool:
+        n = len(intervals) #Length of Intervals
+        for i in range(n): # i->n
+            A = intervals[i] 
+            for j in range(i+1, n): #j->n+1
+                B = intervals[j]
+                if min(A.end, B.end) > max(A.start, B.start): #This is the testing condition for overlap
+                    return False
+        return True
+
+intervals = [(5,8),(9,15)]
+Output: true
+
+intervals=[(0,30),(5,10),(15,20)]
+output= False
+
+
+# Time : O(n2), Space : O(1)
