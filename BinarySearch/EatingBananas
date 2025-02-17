@@ -1,0 +1,29 @@
+# You are given an integer array piles where piles[i] is the number of bananas in the ith pile. You are also given an integer h, which represents the number of hours you have to eat all the bananas.
+# You may decide your bananas-per-hour eating rate of k. Each hour, you may choose a pile of bananas and eats k bananas from that pile. If the pile has less than k bananas, you may finish eating the pile but you can not eat from another pile in the same hour.
+# Return the minimum integer k such that you can eat all the bananas within h hours.
+
+import math
+class Solution:
+    def minEatingSpeed(self, piles: list[int], h: int) -> int:
+        l, r = 1, max(piles)
+        res = r #Initilize it to max(piles)
+
+        while l <= r:
+            k = (l+r) // 2
+            
+            hours = 0
+            for p in piles: #Go thru every pile
+                hours += math.ceil(float(p) / k) #Every pile divided by Mid Value
+            #Round off = math.ceil
+            if hours <= h: #If hours less than given input h
+                res = min(res,k)
+                r = k - 1 #Look for a smaller k
+            else:
+                l = k + 1 #Look for bigger k
+        return res
+
+sol = Solution()
+piles=[25,10,23,4]
+h=4
+print(sol.minEatingSpeed(piles,h))
+# Time : O(n*logm), Space : O(1)

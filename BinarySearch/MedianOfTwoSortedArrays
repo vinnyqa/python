@@ -1,0 +1,37 @@
+# You are given two integer arrays nums1 and nums2 of size m and n respectively, where each is sorted in ascending order. Return the median value among all elements of the two arrays.
+
+class Solution:
+    def findMedianSortedArrays(self, nums1: list[int], nums2: list[int]) -> float:
+        A, B = nums1, nums2
+        total = len(nums1) + len(nums2) #Total Length of 2 nums
+        half = total // 2 #Total Elements in Left Partition
+
+        if len(B) < len(A): #Plan is to Run Binary Search on A, A being smallest.Swap A and B if len of A is bigger than B.
+            A, B = B, A
+
+        l, r = 0, len(A) - 1 #Binary Search on A
+        while True: #Start Binary Search on A
+            i = (l + r) // 2 #A
+            j = half - i - 2 #Index of the Midpoint #B
+
+            Aleft = A[i] if i >= 0 else float("-infinity") #Default Value is -Infinity for Out of Bounds when i<0
+            Aright = A[i + 1] if (i + 1) < len(A) else float("infinity") # If (i+1) is Out of Bounds
+            Bleft = B[j] if j >= 0 else float("-infinity") #Default Value is -Infinity for Out of Bounds when j<0
+            Bright = B[j + 1] if (j + 1) < len(B) else float("infinity") # If (j+1) is Out of Bounds
+
+            if Aleft <= Bright and Bleft <= Aright: #We found the Median but with 2 conditions.
+                if total % 2: #Condition 1: Odd numer of elements
+                    return min(Aright, Bright)
+                #Condition 2: Even numer of elements
+                return (max(Aleft, Bleft) + min(Aright, Bright)) / 2
+            elif Aleft > Bright:
+                r = i - 1
+            else:
+                l = i + 1
+
+#HINT: Run Binary Search on 1 of the Smaller Arrays
+sol = Solution()
+nums1=[1,2]
+nums2=[3]
+print(sol.findMedianSortedArrays(nums1,nums2))
+# Time : O(log(min(n,m))), Space : O(1)
