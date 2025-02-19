@@ -1,0 +1,26 @@
+# Median is the middle value in a sorted list of integers. For lists of even length, there is no middle value, so the median is the mean of the two middle values.
+
+# For arr = [1,2,3], the median is 2.
+# For arr = [1,2], the median is (1 + 2) / 2 = 1.5
+# Implement the MedianFinder class:
+# MedianFinder() initializes the MedianFinder object.
+# void addNum(int num) adds the integer num from the data stream to the data structure.
+# double findMedian() returns the median of all elements so far.
+
+class MedianFinder:
+
+    def __init__(self):
+        self.data = []
+
+    def addNum(self, num: int) -> None:
+        self.data.append(num)
+
+    def findMedian(self) -> float:
+        self.data.sort()
+        n = len(self.data)
+        return (self.data[n // 2] if (n & 1) 
+        else (self.data[n // 2] + self.data[n // 2 - 1]) / 2)
+        
+input = ["MedianFinder", "addNum", "1", "findMedian", "addNum", "2", "findMedian", "addNum", "3", "findMedian"]
+output = [null,null,1.0,null,1.5,null,2.0]
+# Time :O(m) for addNum(), O(m*nlogn) for findMedian(), Space : O(n)
