@@ -3,11 +3,14 @@
 
 class Solution:
     def canJump(self, nums: list[int]) -> bool:
-        goal = len(nums) - 1
+        goal = len(nums) - 1 #4 #Calculate Length
+        
+        for i in range(len(nums) - 1, -1, -1): #Traverse Backwards
+            #print (i) # 4 3 2 1 0
+            #print (nums[i]) # 0 1 0 2 1
 
-        for i in range(len(nums) - 2, -1, -1):
-            if i + nums[i] >= goal:
-                goal = i
+            if i + nums[i] >= goal: #Condition for Jump, Goal = End
+                goal = i #print(goal) 4 3 1 0
         return goal == 0
 
 
@@ -15,6 +18,5 @@ sol = Solution()
 nums1 = [1,2,0,1,0]
 nums2 = [1,2,1,0,1]
 print(sol.canJump(nums1))
-print(sol.canJump(nums2))
+#print(sol.canJump(nums2))
 # Time : O(n), Space : O(1)
-#Kadane's Algorithm
