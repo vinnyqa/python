@@ -1,0 +1,19 @@
+# Design a class to find the kth largest integer in a stream of values, including duplicates. E.g. the 2nd largest from [1, 2, 3, 3] is 3. The stream is not necessarily sorted.
+# Implement the following methods:
+# constructor(int k, int[] nums) Initializes the object given an integer k and the stream of integers nums.
+# int add(int val) Adds the integer val to the stream and returns the kth largest integer in the stream.
+
+class KthLargest:
+
+    def __init__(self, k: int, nums: List[int]):
+        self.k = k
+        self.arr = nums
+
+    def add(self, val: int) -> int:
+        self.arr.append(val)
+        self.arr.sort()
+        return self.arr[len(self.arr) - self.k]
+
+input=["KthLargest", [3, [1, 2, 3, 3]], "add", [3], "add", [5], "add", [6], "add", [7], "add", [8]]
+output = [null,3,3,3,5,6]
+# Time : O(m∗nlogn), Space : O(1) or O(n) depending on the sorting algorithm.
