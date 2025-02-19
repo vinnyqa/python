@@ -1,0 +1,20 @@
+# You are given an integer array nums where each element nums[i] indicates your maximum jump length at that position.
+# Return true if you can reach the last index starting from index 0, or false otherwise.
+
+class Solution:
+    def canJump(self, nums: list[int]) -> bool:
+        goal = len(nums) - 1
+
+        for i in range(len(nums) - 2, -1, -1):
+            if i + nums[i] >= goal:
+                goal = i
+        return goal == 0
+
+
+sol = Solution()
+nums1 = [1,2,0,1,0]
+nums2 = [1,2,1,0,1]
+print(sol.canJump(nums1))
+print(sol.canJump(nums2))
+# Time : O(n), Space : O(1)
+#Kadane's Algorithm
