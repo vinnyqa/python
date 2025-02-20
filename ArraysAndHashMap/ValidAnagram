@@ -18,5 +18,4 @@ sol = Solution()
 s = "racecar"
 t = "carrAce"
 print(sol.isAnagram(s,t))
-
 # Time : O(s+t), Space : O(1)

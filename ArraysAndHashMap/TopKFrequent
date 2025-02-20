@@ -19,4 +19,5 @@ class Solution:
 
 sol = Solution()
 print(sol.topKFrequent([3,3,3,3,2,2],2))
-# Time : O(n), Space : O(n) Bucket Sort Approach
+# Time : O(n), Space : O(n) 
+# Bucket Sort Approach

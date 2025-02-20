@@ -17,6 +17,6 @@ class Solution:
         return maxP
 
 sol = Solution()
-prices=[7,6,4,3,1]
+prices=[10,1,5,6,7,1]
 print(sol.maxProfit(prices))
 # Time : O(n), Space : O(1)
