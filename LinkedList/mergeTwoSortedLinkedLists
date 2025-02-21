@@ -11,24 +11,24 @@ from typing import Optional
 
 class Solution:
     def mergeTwoLists(self, head: ListNode) -> ListNode:
-        dummy = ListNode()
-        tail = dummy
+        dummy = ListNode() #Create a dummynode that acts as the head of the merged list.
+        tail = dummy #Use a pointer (tail) to keep track of the current node in the merged list.
 
         while l1 and l2:
-            if l1.val < l2.val:
-                tail.next = l1
+            if l1.val < l2.val: #Compare the values of the nodes in list1 andlist2.
+                tail.next = l1 #Append the smaller value to the merged list and move the respective pointer (list1orlist2) forward.
                 l1 = l1.next
             else:
                 tail.next = l2
                 l2 = l2.next
-            tail = tail.next
+            tail = tail.next #Move forward the current pointer
 
         if l1:
             tail.next = l1
         elif l2:
             tail.next = l2
 
-        return dummy.next
+        return dummy.next #The merged list starts from dummy.next.
 
 list1=[1,2,4]
 list2=[1,3,5]
