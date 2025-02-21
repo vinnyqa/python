@@ -1,24 +1,27 @@
-# You are given an array of CPU tasks tasks, where tasks[i] is an uppercase english character from A to Z. You are also given an integer n.
+# You are given an array of CPU tasks, where tasks[i] is an uppercase english character from A to Z. You are also given an integer n.
 # Each CPU cycle allows the completion of a single task, and tasks may be completed in any order.
 # The only constraint is that identical tasks must be separated by at least n CPU cycles, to cooldown the CPU.
 # Return the minimum number of CPU cycles required to complete all tasks.
+# GREEDY APPROACH
 
 class Solution:
     def leastInterval(self, tasks: list[str], n: int) -> int:
         count = [0] * 26
         for task in tasks:
-            count[ord(task) - ord('A')] += 1
+            count[ord(task) - ord('A')] += 1 #Count the frequency of each task using count Array.
         
-        count.sort()
-        maxf = count[25]
-        idle = (maxf - 1) * n
+        count.sort() #Sort the frequency in descending order 
 
-        for i in range(24, -1, -1):
-            idle -= min(maxf - 1, count[i])
-        return max(0, idle) + len(tasks)
+        maxf = count[25]
+        idle = (maxf - 1) * n #Calculate idle time between intervals.
+
+        for i in range(24, -1, -1): #Iterate from index 24 to 0
+            idle -= min(maxf - 1, count[i]) #The min(chunk, freq[i]) calculation effectively adapts the initial idle estimate based on less frequent tasks.
+        return max(0, idle) + len(tasks) #Return the total number of intervals required.
 
 sol = Solution()
-tasks=["X","X","Y","Y"]
+tasks=["A","A","A","B","B","B"]
 n=2
+output = 8
 print(sol.leastInterval(tasks,n))
 # Time : O(m) where m is the number of tasks, Space : O(1) since we have at most 26 different characters.
