@@ -24,7 +24,7 @@ class Solution:
             tail = tail.next #Move forward the current pointer
 
         if l1:
-            tail.next = l1
+            tail.next = l1 #If one of the lists is exhausted, append the remaining nodes of the other list to the merged list.
         elif l2:
             tail.next = l2
 
