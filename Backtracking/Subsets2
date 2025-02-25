@@ -1,0 +1,32 @@
+# You are given an array nums of integers, which may contain duplicates. Return all possible subsets.
+# The solution must not contain duplicate subsets. You may return the solution in any order.
+# Backtracking (Pick / Not Pick)
+
+class Solution:
+    def subsetsWithDup(self, nums: list[int]) -> list[list[int]]:
+        res = []
+        nums.sort()
+
+        def dfs(i,subset): #
+            if i == len(nums): #If we reach end of the array
+                res.append(subset[::]) #Make a copy of input array by using :: for keeping a backup not overriding
+                return 
+            
+            # All subsets that include nums[i]
+            subset.append(nums[i])
+            dfs(i+1,subset)
+            subset.pop()
+
+            # All subsets that don't include nums[i]
+            while i+1 < len(nums) and nums[i] == nums[i+1]:
+                i += 1
+            dfs(i+1,subset)
+        
+        dfs(0,[]) #Pass pointer 0th position to dfs
+        return res
+
+sol = Solution()
+nums = [1,2,1]
+Output: [[],[1],[1,2],[1,1],[1,2,1],[2]]
+print(sol.subsetsWithDup(nums))
+# Time : O(n*2^n), Space : O(n)
