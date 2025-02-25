@@ -20,18 +20,18 @@ class Solution:
         visit, cycle = set(), set()
 
         def dfs(crs):
-            if crs in cycle: ##If course is already in Cycle, Cycle detected
+            if crs in cycle: #If course is already in Cycle, Cycle detected
                 return False
-            if crs in visit: ##If course is already in Visit, Cycle detected
+            if crs in visit: #Don't visit the course twice
                     return True
 
-            cycle.add(crs) #Add the course to visitSet if none of the above conditions is true and run DFS on it as below
+            cycle.add(crs) #Add the course to cycle
             for pre in preMap[crs]: #Run DFS on prerequisit of the course
                 if dfs(pre) == False:
                     return False
-            cycle.remove(crs)
-            visit.add(crs)
-            output.append(crs)
+            cycle.remove(crs) #Remove course from cycle as its no longer along the path of DFS
+            visit.add(crs) #Add the course to visit as its already visited
+            output.append(crs) #Add the course to output as we went thru all prerequisites
             return True
 
         for c in range(numCourses):
@@ -41,6 +41,6 @@ class Solution:
 
 sol = Solution()
 numCourses = 3
-prerequisites = [[1,0]]
+prerequisites = [[0,1],[1,2],[2,0]]
 print(sol.findOrder(numCourses,prerequisites))
 # Time : O(V+E), Space : O(V+E)
