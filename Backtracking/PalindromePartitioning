@@ -1,0 +1,31 @@
+# Given a string s, split s into substrings where every substring is a palindrome. Return all possible lists of palindromic substrings.
+# You may return the solution in any order.
+
+class Solution:
+    def partition(self, s: str) -> list[list[str]]:
+        res, part = [], []
+
+        def dfs(i):
+            if i >= len(s):
+                res.append(part.copy()) #To the result append the current partition formed
+                return
+            for j in range(i, len(s)): #Iterate through every character in SubString to check if its a palindrome
+                if self.isPali(s, i, j):
+                    part.append(s[i:j+1]) #Append Palindrome SubString
+                    dfs(j+1) #Depth First Search looking for additional palindromes within SubString
+                    part.pop() #Pop the Partition String
+
+        dfs(0)
+        return res
+
+    def isPali(self,s,l,r):
+        while l < r:
+            if s[l] != s[r]:
+                  return False
+            l,r= l+1, r-1
+        return True
+
+sol = Solution()
+s="aab"
+print(sol.partition(s))
+# Time : O(n*2^n), Space : O(n)
