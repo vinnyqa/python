@@ -30,4 +30,4 @@ nums=[9,2,2,4,6,1,5]
 target=8
 print(sol.combinationSum2(nums,target))
 output =[[3,3,3,3,4],[3,3,5,5],[3,4,4,5],[4,4,4,4]]
-# Time : O(2^t/m), Space : O(t/m)
+# Time : O(n*2^n), Space : O(n)
