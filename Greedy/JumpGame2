@@ -5,14 +5,14 @@
 # Return the minimum number of jumps to reach the last position in the array (index nums.length - 1). You may assume there is always a valid answer.
 
 class Solution:
-    def canJump(self, nums: list[int]) -> bool:
+    def canJump(self, nums: list[int]) -> int:
         res = 0
         l = r = 0
 
         while r < len(nums) - 1:
             farthest = 0
             for i in range(l, r + 1):
-                farthest = max(farthest, i + nums[i])
+                farthest = max(farthest, i + nums[i]) #Farthest u can jump
             l = r + 1
             r = farthest
             res += 1
@@ -20,5 +20,5 @@ class Solution:
     
 sol = Solution()
 nums=[2,4,1,1,1,1]
-print(sol.jump(nums))
+print(sol.canJump(nums))
 # Time : O(n), Space : O(1)
