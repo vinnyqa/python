@@ -14,7 +14,7 @@ class Solution:
                 return
 
             cur.append(nums[i])
-            dfs(i, cur, total + nums[i]) #Run DFS on Current Combination and 
+            dfs(i, cur, total + nums[i]) #Run DFS on Current Combination 
             cur.pop() #Pop the Current Combination
             dfs(i + 1, cur, total) #Run DFS on neighbors of i = (i+1)
 

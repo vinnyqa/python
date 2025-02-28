@@ -1,0 +1,33 @@
+# You are given an array of integers candidates, which may contain duplicates, and a target integer target. Your task is to return a list of all unique combinations of candidates where the chosen numbers sum to target.
+# Each element from candidates may be chosen at most once within a combination. The solution set must not contain duplicate combinations.
+# You may return the combinations in any order and the order of the numbers in each combination can be in any order.
+
+class Solution:
+    def combinationSum2(self, nums: list[int], target: int) -> list[list[int]]:
+        res = []
+        nums.sort()
+
+        def dfs(i, cur, total):
+            if total == target:
+                res.append(cur.copy()) #Append the Current Combinations to Result Array
+                return
+            if total > target or i == len(nums): #Out of Bounds
+                return
+
+            cur.append(nums[i])
+            dfs(i+1, cur, total + nums[i]) #Run DFS on Current Combination 
+            cur.pop() #Pop the Current Combination
+
+            while i + 1 < len(nums) and nums[i] == nums[i+1]: #Duplicate Check
+                i += 1 #Increment Pointer
+            dfs(i + 1, cur, total) #Run DFS on neighbors of i = (i+1)
+
+        dfs(0, [], 0)
+        return res
+            
+sol = Solution()
+nums=[9,2,2,4,6,1,5]
+target=8
+print(sol.combinationSum2(nums,target))
+output =[[3,3,3,3,4],[3,3,5,5],[3,4,4,5],[4,4,4,4]]
+# Time : O(2^t/m), Space : O(t/m)
