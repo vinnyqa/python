@@ -9,7 +9,7 @@ class Solution:
 
         for i in range(len(s)):
             # odd length
-            l, r = i, i
+            l, r = i, i #Odd is right pointer at i
             while l >= 0 and r < len(s) and s[l] == s[r]:
                 if (r - l + 1) > resLen: #Verify Length of Palindrome by (r-l+1) is greater than current Result Length
                     resIdx = l
@@ -18,7 +18,7 @@ class Solution:
                 r += 1
 
             # even length
-            l, r = i, i + 1
+            l, r = i, i + 1 #Even is right pointer at i+1
             while l >= 0 and r < len(s) and s[l] == s[r]:
                 if (r - l + 1) > resLen:
                     resIdx = l
