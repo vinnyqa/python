@@ -1,0 +1,29 @@
+# Given a string s, return the number of substrings within s that are palindromes.
+# A palindrome is a string that reads the same forward and backward.
+
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        res = 0
+
+        for i in range(len(s)):
+            # odd length
+            l, r = i, i #Odd is right pointer at i
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                res += 1 #Store Number of Palindromes here 
+                l -= 1
+                r += 1
+
+            # even length
+            l, r = i, i + 1 #Even is right pointer at i+1
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                res += 1 #Store Number of Palindromes here
+                l -= 1
+                r += 1
+
+        return res
+
+sol = Solution()
+s="abc"
+print(sol.countSubstrings(s))
+# Time : O(n^2), Space : O(1)
+# ITERATIVE BINARY SEARCH
