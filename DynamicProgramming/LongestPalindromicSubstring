@@ -11,7 +11,7 @@ class Solution:
             # odd length
             l, r = i, i
             while l >= 0 and r < len(s) and s[l] == s[r]:
-                if (r - l + 1) > resLen:
+                if (r - l + 1) > resLen: #Verify Length of Palindrome by (r-l+1) is greater than current Result Length
                     resIdx = l
                     resLen = r - l + 1
                 l -= 1
