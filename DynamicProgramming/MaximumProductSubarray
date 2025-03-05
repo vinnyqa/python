@@ -1,0 +1,23 @@
+# Given an integer array nums, find a subarray that has the largest product within the array and return it.
+# A subarray is a contiguous non-empty sequence of elements within an array.
+# You can assume the output will fit into a 32-bit integer.
+
+class Solution:
+    def maxProduct(self, nums: list[int]) -> int:
+        maxSub = nums[0]
+        curMin, curMax = 1, 1
+
+        for num in nums:
+            tmp = curMax * num
+            curMax = max(num * curMax, num * curMin, num)
+            curMin = min(tmp, num * curMin, num)
+            maxSub = max(maxSub,curMax)
+            print(maxSub)
+        return maxSub
+
+sol = Solution()
+maxSub=[1,2,-3,4]
+output=8
+print(sol.maxProduct(maxSub))
+# Time : O(n), Space : O(1)
+#Kadane's Algorithm
