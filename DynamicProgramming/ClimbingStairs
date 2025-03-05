@@ -4,12 +4,12 @@
 
 class Solution:
     def climbStairs(self, n: int) -> int:
-        one, two = 1,1
+        one, two = 1,1 #Last Index Variable will be two, Last but One Index variable will be One
 
         for i in range(n-1):
             temp = one
-            one = one + two
-            two = temp
+            one = one + two #Compute One by adding last 2 positions
+            two = temp #Compute Two by assigning One to Two
         return one
 
 sol = Solution()
