@@ -20,5 +20,5 @@ nums=[2,2,2]
 target=4
 output = 0
 print(sol.findTargetSumWays(nums,target))
-# Time : O(t*m^n), Space : O(n)
+# Time : O(2^n), Space : O(n)
 # RECURSION HASHSET
