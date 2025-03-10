@@ -1,0 +1,23 @@
+# Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of dictionary words.
+# You are allowed to reuse words in the dictionary an unlimited number of times. You may assume all dictionary words are unique.
+
+class Solution:
+    def wordBreak(self, s: str, wordDict: list[str]) -> bool:
+        def dfs(i):
+            if i == len(s): 
+                return True
+            
+            for w in wordDict:  
+                if ((i + len(w)) <= len(s) and s[i : i + len(w)] == w): #Verify if length of current word is less than string length AND Substring is equal to Word
+                    if dfs(i + len(w)): 
+                        return True
+            return False
+        
+        return dfs(0)
+
+sol = Solution()
+s="neetcode"
+wordDict=["neet","code"]
+output = True
+print(sol.wordBreak(s,wordDict))
+# Time : O(t*m^n), Space : O(n)
