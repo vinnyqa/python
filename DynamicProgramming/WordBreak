@@ -11,7 +11,7 @@ class Solution:
             
             for j in range(i, len(s)):
                 if s[i : j + 1] in wordSet:
-                    if dfs(j + 1):
+                    if dfs(j + 1): #Recursive DFS call with the next character inside SubString
                         return True
             return False
         
