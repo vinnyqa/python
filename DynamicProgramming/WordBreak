@@ -3,13 +3,15 @@
 
 class Solution:
     def wordBreak(self, s: str, wordDict: list[str]) -> bool:
+        wordSet = set(wordDict)
+
         def dfs(i):
-            if i == len(s): 
+            if i == len(s):
                 return True
             
-            for w in wordDict:  
-                if ((i + len(w)) <= len(s) and s[i : i + len(w)] == w): #Verify if length of current word is less than string length AND Substring is equal to Word
-                    if dfs(i + len(w)): #Recursion Call
+            for j in range(i, len(s)):
+                if s[i : j + 1] in wordSet:
+                    if dfs(j + 1):
                         return True
             return False
         
@@ -17,7 +19,8 @@ class Solution:
 
 sol = Solution()
 s="neetcode"
-wordDict=["neet","code"]
+wordDict=["neet","vinny"]
 output = True
 print(sol.wordBreak(s,wordDict))
 # Time : O(t*m^n), Space : O(n)
+# RECURSION HASHSET
