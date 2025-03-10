@@ -9,7 +9,7 @@ class Solution:
             
             for w in wordDict:  
                 if ((i + len(w)) <= len(s) and s[i : i + len(w)] == w): #Verify if length of current word is less than string length AND Substring is equal to Word
-                    if dfs(i + len(w)): 
+                    if dfs(i + len(w)): #Recursion Call
                         return True
             return False
         
