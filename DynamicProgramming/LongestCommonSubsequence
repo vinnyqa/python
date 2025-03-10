@@ -6,19 +6,19 @@
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
         
-        def backtrack(i, total):
-            if i ==len(nums):
-                return  total == target
-            
-            return (backtrack(i + 1, total + nums[i]) + 
-                    backtrack(i + 1, total - nums[i]))
-                
-        return backtrack(0, 0)
+        def dfs(i, j):
+            if i == len(text1) or j == len(text2):
+                return 0
+            if text1[i] == text2[j]:
+                return 1 + dfs(i + 1, j + 1)
+            return max(dfs(i + 1, j), dfs(i, j + 1))
+        
+        return dfs(0, 0)
 
 sol = Solution()
-nums=[2,2,2]
-target=4
-output = 0
-print(sol.longestCommonSubsequence(s,wordDict))
-# Time : O(t*m^n), Space : O(n)
+text1="crabt"
+text2="cat"
+output = 3
+print(sol.longestCommonSubsequence(text1,text2))
+# Time : O(2^m+n), Space : O(m+n)
 # RECURSION HASHSET
