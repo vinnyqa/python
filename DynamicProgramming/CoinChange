@@ -20,5 +20,5 @@ coins=[1,2,5]
 amount=11
 output = 3
 print(sol.coinChange(coins,amount))
-# Time : O(2^m+n), Space : O(m+n)
-# RECURSION HASHSET
+# Time : O(n*t), Space : O(t)
+# DP BOTTOM-UP
