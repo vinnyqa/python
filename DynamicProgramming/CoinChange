@@ -1,6 +1,6 @@
-# There is an m x n grid where you are allowed to move either down or to the right at any point in time.
-# Given the two integers m and n, return the number of possible unique paths that can be taken from the top-left corner of the grid (grid[0][0]) to the bottom-right corner (grid[m - 1][n - 1]).
-# You may assume the output will fit in a 32-bit integer.
+# You are given an integer array coins representing coins of different denominations (e.g. 1 dollar, 5 dollars, etc) and an integer amount representing a target amount of money.
+# Return the fewest number of coins that you need to make up the exact target amount. If it is impossible to make up the amount, return -1.
+# You may assume that you have an unlimited number of each coin.
 
 class Solution:
     def coinChange(self, coins: list[int], amount: int) -> int:
