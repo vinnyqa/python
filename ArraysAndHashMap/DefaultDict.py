@@ -7,7 +7,7 @@ class Solution:
         print(d)
         d['vegetables'].append('carrot')
         print(d)
-        print(d['juices'])
+        #print(d['juices'])
 
 sol = Solution()
 print(sol.dummy())
