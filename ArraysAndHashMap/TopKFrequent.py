@@ -9,8 +9,7 @@ class Solution:
             count[n] = 1+count.get(n,0) # Map the Frequency of Elements to Hashmap as Values.
         for n,c in count.items():
             freq[c].append(n) # Create a Frequency Array of Array freq[[]], Store Values in the place of Index
-
-        res = [] # Create a Result Array res[], Append the Values and Stop when length of Array equals the Top K target 
+        res = [] # Create a Result Array res[], Append the Values and Stop when length of Array equals the Top K target
         for i in range(len(freq) - 1, 0, -1):
             for num in freq[i]:
                 res.append(num)
