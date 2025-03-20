@@ -23,5 +23,6 @@ class Solution:
 
 sol = Solution()
 height=[0,2,0,3,1,0,1,3,2,1]
+output = 9
 print(sol.trap(height))
 # Time : O(n), Space : O(1)

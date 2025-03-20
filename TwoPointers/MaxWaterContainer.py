@@ -18,5 +18,5 @@ class Solution:
 sol = Solution()
 nums = [1,7,2,5,4,7,3,6]
 print(sol.maxArea(nums))
-
+output = 36
 # Time : O(n), Space : O(1)
