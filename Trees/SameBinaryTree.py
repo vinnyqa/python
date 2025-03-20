@@ -8,21 +8,9 @@
 # Recursive Depth First Search (DFS)
 
 class Solution:
-    def isSubtree(self, p: Optional[TreeNode], subRoot: q[TreeNode]) -> bool:
-        if not q:
+    def isSameTree(self, p: Optional[TreeNode], subRoot: q[TreeNode]) -> bool:
+        if not p and not q:
             return True
-        if not p:
-            return False
-
-        if self.sameTree(p, q):
-            return True
-        return (self.isSubtree(p.left, q) or 
-               self.isSubtree(p.right, q))
-     
-    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        if not p and not q: #both Trees are empty
-            return True
-        
         if p and q and p.val == q.val:
             return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
         else:
@@ -32,5 +20,5 @@ sol = Solution()
 p=[1,2,3,4,5]
 q=[2,4,5]
 output = true
-print(sol.isSubtree(p,q))
+print(sol.isSameTree(p,q))
 # Time : O(m*n), Space : O(m+n)
