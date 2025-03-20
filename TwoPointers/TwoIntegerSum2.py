@@ -16,8 +16,5 @@ class Solution:
 
 sol = Solution()
 print(sol.twoSum2([1,2,3,5],8))
-
+output = [3,4]
 # Time : O(n), Space : O(1)
-# Traverse through the List, Calculate difference
-# If difference is already in Hashmap return index of difference and current element index
-# Else store the current element in the hashmap with its index and continue
