@@ -25,7 +25,9 @@ class Solution:
 
 sol = Solution()
 nums1 = [-1,0,1,2,-1,-4]
+output = [[-1, -1, 2], [-1, 0, 1]]
 nums2 = [0,1,1]
+output = []
 print(sol.threeSum(nums1))
 print(sol.threeSum(nums2))
 
