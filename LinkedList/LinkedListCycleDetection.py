@@ -7,8 +7,6 @@ class ListNode:
          self.val = val
          self.next = next
 
-from typing import Optional
-
 class Solution:
     def hasCycle(self, head: ListNode) -> bool:
         slow, fast = head, head #Slow & Fast will be at same position
@@ -22,5 +20,5 @@ class Solution:
 
 head=[1,2,3,4]
 index=1
-output = true 
+#output = true
 # Time : O(n), Space : O(1)

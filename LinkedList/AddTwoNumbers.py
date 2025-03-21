@@ -30,6 +30,7 @@ class Solution:
             l2 = l2.next if l2 else None #L2 is assigned to l2.next
 
         return dummy.next #
+    
 l1=[1,2,3]
 l2=[4,5,6]
 Output = [5,7,9]    
