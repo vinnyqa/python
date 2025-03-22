@@ -4,7 +4,7 @@
 class Solution:
     def dailyTemperatures(self, temperatures: list[int]) -> list[int]:
         res = [0] * len(temperatures)
-        stack = [] # pair: [index,height]
+        stack = [] # pair: [temp,index]
 
         for i,t in enumerate(temperatures): # i=index, t= temp
             while stack and t > stack[-1][0]: #While Stack is empty & Temp is greater than Top of Stack (stack[-1]) & First Value of Stack (stack[0])
